@@ -1,17 +1,12 @@
-package com.eliza.howToCreatObject
+package com.eliza.howToCreatObject.method
 
 import org.springframework.context.ApplicationContext
 import org.springframework.context.support.ClassPathXmlApplicationContext
 
 
-/*-*- coding:utf-8 -*-
- * @Author  : lubu
- * @Time    : 1/5/22
- * @Software: IntelliJ IDEA
- */
-class UseSpring {
+class UseNote {
 
-    var beanPath = "howToCreatObject/Bean01/beans.xml"
+    var beanPath = "howToCreatObject/note.xml"
 
     constructor()
 
@@ -29,7 +24,7 @@ class UseSpring {
 
     }
 
-    fun useSpring(obj: String): Any {
+    fun useNote(obj: String): Any {
 
         //1.获取核心容器对象  此时创建配置文件中的对象
         val ac: ApplicationContext = ClassPathXmlApplicationContext(beanPath)

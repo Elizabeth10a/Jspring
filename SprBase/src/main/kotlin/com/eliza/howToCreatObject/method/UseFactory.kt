@@ -1,4 +1,4 @@
-package com.eliza.howToCreatObject
+package com.eliza.howToCreatObject.method
 
 import com.eliza.howToCreatObject.model.User
 import java.util.*

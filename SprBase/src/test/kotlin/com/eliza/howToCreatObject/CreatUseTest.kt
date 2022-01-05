@@ -1,5 +1,6 @@
 package com.eliza.howToCreatObject
 
+import com.eliza.howToCreatObject.method.UseSpring
 import com.eliza.howToCreatObject.model.User
 import org.junit.jupiter.api.Test
 
@@ -49,7 +50,7 @@ internal class CreatUseTest {
 
     @Test
     fun getUserWithAutowire() {
-        cu = UseSpring("howToCreatObject/BeanAutowire/QuoteBeans.xml")
+        cu = UseSpring("howToCreatObject/Bean01/BeanAutowire/QuoteBeans.xml")
 //        引用类型
         //构造 引用注入
         var user = cu.useSpring("userByName") as User
