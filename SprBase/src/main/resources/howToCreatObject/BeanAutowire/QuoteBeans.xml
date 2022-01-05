@@ -33,19 +33,23 @@
         <property name="age" value="12"/><!--setAge(21)-->
         <!--        <property name="goods" ref="goods"/>-->
     </bean>
-    <bean id="goods" class="com.eliza.howToCreatObject.model.Goods"><!-- 类的全限定 名称 -->
-        <property name="name" value="lisi"/><!--setName("李四")-->
+<!--
+  <bean id="goods" class="com.eliza.howToCreatObject.model.Goods">&lt;!&ndash; 类的全限定 名称 &ndash;&gt;
+        <property name="name" value="lisi"/>&lt;!&ndash;setName("李四")&ndash;&gt;
     </bean>
+-->
 
     <!--
     goods 过多
      There is more than one bean of 'Goods' type. Beans: structGoodsWithName,goods. Properties: 'goods'
     -->
-    <bean id="userByType" class="com.eliza.howToCreatObject.model.User" autowire="byType"><!-- 类的全限定 名称 -->
-        <property name="name" value="lisi"/><!--setName("李四")-->
-        <property name="age" value="12"/><!--setAge(21)-->
-        <!--        <property name="goods" ref="goods"/>-->
+<!--
+    <bean id="userByType" class="com.eliza.howToCreatObject.model.User" autowire="byType">&lt;!&ndash; 类的全限定 名称 &ndash;&gt;
+        <property name="name" value="lisi"/>&lt;!&ndash;setName("李四")&ndash;&gt;
+        <property name="age" value="12"/>&lt;!&ndash;setAge(21)&ndash;&gt;
+        &lt;!&ndash;        <property name="goods" ref="goods"/>&ndash;&gt;
     </bean>
+-->
 
 
 </beans>
