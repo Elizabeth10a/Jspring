@@ -15,7 +15,7 @@ import java.util.*
 class RedisUtils {
     companion object {
 
-        var pool: JedisPool? = null
+        lateinit var pool: JedisPool
         var poolConfig = JedisPoolConfig()
         var proKey = HashMap<String, String>()
         var pro = Properties()
@@ -24,7 +24,7 @@ class RedisUtils {
 
     init {
         //加载配置文件
-        val conf = JedisPoolUtil::class.java.classLoader.getResourceAsStream("redis.properties")
+        val conf = RedisUtils::class.java.classLoader.getResourceAsStream("redis.properties")
 
         try {
             pro.load(conf)
@@ -45,6 +45,17 @@ class RedisUtils {
 
 
         // public JedisPool(GenericObjectPoolConfig poolConfig, String host, int port, int timeout, String password)
+
+    }
+
+    fun getJedisWithoutPwd(): Jedis {
+//        val jedis = Jedis("192.168.20.128", 6379)
+
+        return Jedis(proKey["url"].toString(), proKey["port"].toString().toInt())
+
+    }
+
+    fun getJedisWithPwd(): Jedis {
         pool = JedisPool(
             poolConfig,
             proKey["url"].toString(),
@@ -52,10 +63,9 @@ class RedisUtils {
             proKey["timeout"].toString().toInt(),
             proKey["password"].toString()
         )
-    }
+        //1. 获取连接
 
-    fun getJedis(): Jedis? {
-        return RedisUtils.pool?.resource
+        return pool.resource
     }
 
     fun getJedisWithHP(url: String? = null): Jedis? {

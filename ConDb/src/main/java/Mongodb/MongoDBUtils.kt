@@ -88,6 +88,8 @@ class MongoDBUtils {
         }
         // 连接到数据库
         database?.let { return this.mc?.getDatabase(database) }
+        println("Connect to database successfully")
+
         return this.mc?.getDatabase(this.proKey[Pro.Database.name])//MongoClient
 
 

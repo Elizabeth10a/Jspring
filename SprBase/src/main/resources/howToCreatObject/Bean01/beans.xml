@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--告诉spring创建对象
+        声明bean ， 就是告诉spring要创建某个类的对象
+        id:对象的自定义名称，唯一值。 spring通过这个名称找到对象
+        class:类的全限定名称（不能是接口，因为spring是反射机制创建对象，必须使用类）
+
+        spring就完成 SomeService someService = new SomeServiceImpl();
+        spring是把创建好的对象放入到map中， spring框架有一个map存放对象的。
+           springMap.put(id的值， 对象）；
+           例如 springMap.put("someService", new SomeServiceImpl());
+
+        一个bean标签声明一个对象。
+    -->
+    <bean id="user" class="com.eliza.howToCreatObject.model.User"/>
+
+
+    <!--
+       spring能创建一个非自定义类的对象吗， 创建一个存在的某个类的对象。
+    -->
+    <bean id="mydate" class="java.util.Date"/>
+
+
+    <!--
+        SET注入  必须有set方法 方法内部自己设置,无参构造之后
+           1. set注入（设值注入） ：spring调用类的set方法， 你可以在set方法中完成属性赋值
+         1）简单类型的set注入
+            <bean id="xx" class="yyy">
+               <property name="属性名字" value="此属性的值"/>
+               一个property只能给一个属性赋值
+               <property....>
+            </bean>
+
+
+
+    -->
+    <bean id="ssUser" class="com.eliza.howToCreatObject.model.User"><!-- 类的全限定 名称 -->
+        <property name="name" value="李四lisi"/><!--setName("李四")-->
+        <property name="age" value="22"/><!--setAge(21)-->
+        <property name="email" value="lisi@qq.com"/><!-- 属性可以不存在,但方法命名要u=符合规范-->
+    </bean>
+    <!--
+        引用类型赋值
+           2) 引用类型的set注入 ： spring调用类的set方法
+                   <bean id="xxx" class="yyy">
+                      <property name="属性名称" ref="bean的id(对象的名称)" />
+                   </bean>
+    -->
+    <bean id="goods" class="com.eliza.howToCreatObject.model.Goods">
+        <property name="name" value="华为垃圾手机1.0"/>
+        <property name="price" value="3"/>
+    </bean>
+
+    <bean id="sqUser" class="com.eliza.howToCreatObject.model.User"><!-- 类的全限定 名称 -->
+        <property name="name" value="lisi"/><!--setName("李四")-->
+        <property name="age" value="12"/><!--setAge(21)-->
+        <property name="goods" ref="goods"/>
+    </bean>
+
+
+    <!--
+     2.构造注入：spring调用类有参数构造方法，在创建对象的同时，在构造方法中给属性赋值。
+          构造注入使用 <constructor-arg> 标签
+          <constructor-arg> 标签：一个<constructor-arg>表示构造方法一个参数。
+          <constructor-arg> 标签属性：
+             name:表示构造方法的形参名
+             index:表示构造方法的参数的位置，参数从左往右位置是 0 ， 1 ，2的顺序
+             value：构造方法的形参类型是简单类型的，使用value
+             ref：构造方法的形参类型是引用类型的，使用ref
+    -->
+    <bean id="structUserWithName" class="com.eliza.howToCreatObject.model.User"><!-- 类的全限定 名称 -->
+        <constructor-arg name="name" value="zhangSan"/>
+        <constructor-arg name="age" value="12"/>
+        <constructor-arg ref="goods"/>
+    </bean>
+
+    <bean id="structGoodsWithName" class="com.eliza.howToCreatObject.model.Goods"><!-- 类的全限定 名称 -->
+        <constructor-arg name="name" value="华为垃圾手机2.0"/>
+        <constructor-arg name="price" value="122"/>
+    </bean>
+    <bean id="structUserWithIndex" class="com.eliza.howToCreatObject.model.User"><!-- 类的全限定 名称 -->
+        <constructor-arg index="0" value="zanShi"/>
+        <constructor-arg index="1" value="56"/>
+        <constructor-arg index="2" ref="structGoodsWithName"/>
+    </bean>
+
+
+
+
+</beans>
+        <!--
+           spring的配置文件
+           1.beans : 是根标签，spring把java对象成为bean。
+           2.spring-beans.xsd 是约束文件，和mybatis指定  dtd是一样的。
+        -->

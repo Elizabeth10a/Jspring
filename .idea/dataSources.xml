@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="@192.168.20.128" uuid="00742c8c-260e-4b09-a79e-1c4983fab0a9">
+    <data-source source="LOCAL" name="@192.168.20.128" uuid="0f03d0ba-3945-4f38-8a60-ae6eca70d118">
       <driver-ref>mongo</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.dbschema.MongoJdbcDriver</jdbc-driver>
@@ -11,11 +11,11 @@
         <property name="script_engine" value="nashorn" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="@localhost" uuid="938f9ee0-ecec-4783-a8c2-cc4b7aa897db">
+    <data-source source="LOCAL" name="@192.168.20.128 [2]" uuid="7202b61d-582d-4fe0-a967-5360e0b619db">
       <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mariadb://localhost:3306</jdbc-url>
+      <jdbc-url>jdbc:mariadb://192.168.20.128:3306</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

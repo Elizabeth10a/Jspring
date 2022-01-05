@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--
+  sql映射文件（sql mapper）： 写sql语句的， mybatis会执行这些sql
+  1.指定约束文件
+     <!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    mybatis-3-mapper.dtd是约束文件的名称， 扩展名是dtd的。
+  2.约束文件作用：  限制，检查在当前文件中出现的标签，属性必须符合mybatis的要求。
+-->
+
+
+<!--
+  3.mapper 是当前文件的根标签，必须的。
+    namespace：叫做命名空间，唯一值的， 可以是自定义的字符串。
+               要求你使用dao接口的全限定名称。
+-->
+<mapper namespace="mybatis.dao.UserDao">
+
+    <!--
+       select:表示查询操作。
+       id: 你要执行的sql语法的唯一标识， mybatis会使用这个id的值来找到要执行的sql语句
+           可以自定义，但是要求你使用接口中的方法名称。
+
+       resultType:表示结果类型的， 是sql语句执行后得到ResultSet,遍历这个ResultSet得到java对象的类型。
+          值写的类型的全限定名称
+    -->
+
+
+    <!--
+             resultMap和resultType不要一起用，二选一
+   返回  同名列 对应同名属性,没有对应属性则丢弃
+   接口的返回值,可以是任意的java类型
+    -->
+    <select id="getAllUser" resultType="mybatis.module.User">
+        SELECT *
+        FROM Mybatis.m_user
+        order by id;
+    </select>
+    <!--
+      4.在当前文件中，可以使用特定的标签，表示数据库的特定操作。
+       <select>:表示执行查询，select语句
+       <update>:表示更新数据库的操作， 就是在<update>标签中 写的是update sql语句
+       <insert>:表示插入， 放的是insert语句
+       <delete>:表示删除， 执行的delete语句
+    -->
+    <!--插入操作 插入一个类的对象 的属性值-->
+    <insert id="addUser">
+        insert into Mybatis.m_user
+        values (#{id}, #{name}, #{pwd})
+    </insert>
+
+
+    <!--    根据 参数 查找-->
+    <!--    parameterType 数据类型 的全限定名称  或mybatis定义的别名
+    不是强制要写 ， 通过反射 获取值类型 -->
+
+
+    <!--
+    简单类型的参数-    #{任意字符}  JDBC -> conn.prepareStatement,
+   将rs中的 数据 存入一个对象 resultType 中，并返回到函数的返回值
+   要有无参构造， 没有sql注入的风险
+
+    -->
+
+    <select id="getAllUserById" parameterType="kotlin.UInt" resultType="mybatis.module.User">
+        SELECT *
+        FROM Mybatis.m_user
+        where id = #{id}
+    </select>
+
+
+    <!--
+    #{}  Preparing: SELECT * FROM Mybatis.m_user where id =  ? 代替数据
+
+
+    ${}  Preparing: SELECT * FROM Mybatis.m_user where id = 1
+        直接显示数据,字符串链接, Statement -> sql
+        效率比 PreparedStatement 低
+            sql注入
+
+    -->
+    <select id="getAllUserBySql" resultType="mybatis.module.User">
+        SELECT *
+        FROM Mybatis.m_user
+        where name = ${name}
+    </select>
+
+
+    <!-- 多参数传值   -->
+
+    <!--
+      形参前 @Param
+     fun getAllUserBySome1(
+                    @Param("myId") id: Int,
+                    @Param("myName") name: String
+
+    ): List<User>-->
+    <select id="getAllUserBySome1" resultType="mybatis.module.User">
+        SELECT *
+        FROM Mybatis.m_user
+        where id = #{myId}
+           or name = #{myName}
+
+    </select>
+
+
+    <!--     对象作为参数
+        #{属性名 , javaType=类型名称,jdbcType=数据类型}
+        java 与 数据库中-的 数据类型
+        #{id,javaType=kotlin.UInt,jdbcType=kotlin.varchar}
+    对象是自定义的,只要有对应名称的属性 与 #{属性} 同名
+        简化->#{属性名}
+    -->
+    <select id="getAllUserByObject" resultType="mybatis.module.User">
+        SELECT *
+        FROM Mybatis.m_user
+        where pwd = #{pwd}
+           or name = #{name}
+
+    </select>
+
+    <!--    按位置 传参数
+         #{0}   3.4  #{arg0}
+         #{1}   3.4  #{arg1}
+    -->
+    <select id="getAllUserByPosition" resultType="mybatis.module.User">
+        SELECT *
+        FROM Mybatis.m_user
+        where name = #{arg0}
+           or pwd = #{arg1}
+    </select>
+
+    <!--    按位置 传参数
+      #{map的 k }
+ -->
+    <select id="getAllUserByMap" resultType="User">
+        SELECT *
+        FROM Mybatis.m_user
+        where name = #{name}
+           or pwd = #{psw};
+    </select>
+
+
+    <!--
+    返回简单类型
+        mybatis 的 别名/ 全限定名称(最好用此)
+        简写类型: 定义别名->主配置文件中   <typeAliases>
+                加载 package
+    -->
+
+
+    <select id="getUserCount" resultType="int">
+        SELECT count(*)
+        FROM Mybatis.m_user
+    </select>
+
+    <!--
+    返回MAP
+    列名-map-k
+    列值-map-v
+    最多只能返回一行数据,多了会报错
+
+-->
+
+    <select id="getUserMapByName" resultType="java.util.HashMap">
+
+        SELECT id, name
+        FROM Mybatis.m_user
+        where name = #{name}
+    </select>
+
+
+    <!--    使用 resultMap
+
+    先定义  id=  自定义名称  type= 全限定名称
+        属性名与列名不同 -> 可以对应绑定
+        也可以->select id as u_id
+
+
+    后引用
+
+
+    -->
+
+    <resultMap id="UserMap" type="mybatis.module.User">
+        <!-- 注解列    property= java 类型的属性名 -->
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="pwd" property="pwd"/>
+    </resultMap>
+
+    <select id="getAllUserMapByName" resultMap="UserMap">
+        SELECT id, name, pwd
+        FROM Mybatis.m_user
+        where name = #{name}
+
+    </select>
+
+
+    <!--   模糊查询
+    java 代码指定 模糊关键词
+    -->
+    <select id="getUserInfoByNameLike" resultMap="UserMap">
+        SELECT id, name, pwd
+        FROM Mybatis.m_user
+        where name like #{name}
+
+    </select>
+    <select id="getUserInfoByNameLike2" resultMap="UserMap">
+        SELECT id, name, pwd
+        FROM Mybatis.m_user
+        where name like %#{name}"%"
+
+    </select>
+
+</mapper>

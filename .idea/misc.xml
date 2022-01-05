@@ -11,11 +11,13 @@
         <option value="$PROJECT_DIR$/Proxy/pom.xml" />
         <option value="$PROJECT_DIR$/Mybatis/pom.xml" />
         <option value="$PROJECT_DIR$/SprBase/pom.xml" />
+        <option value="$PROJECT_DIR$/ConDb/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/JdkProxy/pom.xml" />
+        <option value="$PROJECT_DIR$/Mybatis/mybatisBase/pom.xml" />
         <option value="$PROJECT_DIR$/Proxy/JdkProxy/pom.xml" />
       </set>
     </option>

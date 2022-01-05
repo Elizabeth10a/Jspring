@@ -8,12 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ConDb" />
-        <module name="mybatisBase" />
+        <module name="Mybatis" />
         <module name="SprBase" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="JdkProxy" target="17" />
+      <module name="mybatisBase" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

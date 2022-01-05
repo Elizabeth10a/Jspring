@@ -8,8 +8,9 @@
     <artifactId>Jspring</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>ConDb</module>
+        <module>Mybatis</module>
     </modules>
+
     <packaging>pom</packaging>
 
     <properties>
