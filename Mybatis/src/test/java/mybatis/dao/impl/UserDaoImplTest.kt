@@ -30,7 +30,7 @@ internal class UserDaoImplTest {
 
     @Test
     fun getAllUserById() {
-        println(UserDaoImpl().getAllUserById(1))
+        println(UserDaoImpl().getAllUserById(12))
     }
 
 

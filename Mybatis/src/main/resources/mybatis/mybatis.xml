@@ -25,7 +25,7 @@
 <configuration>
     <!--指定properties文件的位置，
     从类路径根开始找文件-->
-    <properties resource="jdbc.properties"/>
+    <properties resource="db.properties"/>
 
 
     <!--settings：控制mybatis全局行为-->
@@ -44,10 +44,12 @@
     </typeAliases>
 
 
-    <!--配置分页插件-->
-    <plugins>
-        <plugin interceptor="com.github.pagehelper.PageInterceptor" />
-    </plugins>
+    <!--
+        &lt;!&ndash;配置分页插件&ndash;&gt;
+        <plugins>
+            <plugin interceptor="com.github.pagehelper.PageInterceptor" />
+        </plugins>
+    -->
 
     <!--环境配置： 数据库的连接信息
         default:默认连哪个数据库
@@ -134,17 +136,14 @@
         <!--   target/classes/mybatis/UserDao.xml-->
         <mapper resource="mybatis/UserDao.xml"/>
         <mapper resource="mybatis/DynamicUserDao.xml"/>
-        <!--        <mapper resource="mybatis/Base/domain/UserDao.xml"/>-->
 
 
         <!--第二种方式： 使用包名
          name: xml文件（mapper文件）所在的包名, 这个包中所有xml文件一次都能加载给mybatis
          使用package的要求：
-          1. mapper文件名称需要和接口名称一样， 区分大小写的一样
-          2. mapper文件和dao接口需要在同一目录
+              1. mapper文件名称需要和接口名称一样， 区分大小写的一样
+              2. mapper文件和dao接口需要在同一目录,不在同一目录会找不到资源
      -->
-        <package name="mybatis.dao.UserDao"/>
-        <!-- <package name="com.bjpowernode.dao2"/>
-         <package name="com.bjpowernode.dao3"/>-->
+        <!--        <package name="classpath:mybatis"/>-->
     </mappers>
 </configuration>

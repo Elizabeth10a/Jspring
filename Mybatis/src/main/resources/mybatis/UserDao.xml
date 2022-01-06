@@ -215,7 +215,7 @@
     <select id="getUserInfoByNameLike2" resultMap="UserMap">
         SELECT id, name, pwd
         FROM Mybatis.m_user
-        where name like %#{name}"%"
+        where name like #{name}"%"
 
     </select>
 

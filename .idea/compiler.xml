@@ -7,7 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Sprioc" />
+        <module name="SprIoc" />
         <module name="Proxy" />
         <module name="ConDb" />
         <module name="Mybatis" />
@@ -17,12 +17,14 @@
     <bytecodeTargetLevel>
       <module name="JdkProxy" target="17" />
       <module name="mybatisBase" target="17" />
+      <module name="Sprioc" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Proxy" options="-parameters" />
       <module name="SprBase" options="-parameters" />
+      <module name="SprIoc" options="-parameters" />
       <module name="Sprioc" options="-parameters" />
     </option>
   </component>

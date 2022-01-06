@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eliza.sprioc.spribatis.dao.UserDao">
+
+    <insert id="addUser">
+        insert into Mybatis.m_user
+        values (#{id}, #{name}, #{pwd})
+    </insert>
+
+    <select id="getAllUser" resultType="User">
+        SELECT id, name, pwd
+        FROM Mybatis.m_user
+        order by id;
+
+    </select>
+</mapper>

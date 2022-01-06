@@ -1,5 +1,7 @@
 package mybatis.utils
 
+import mybatis.dao.UserDao
+import mybatis.dao.impl.UserDaoImpl
 import mybatis.module.User
 import org.junit.jupiter.api.Test
 
