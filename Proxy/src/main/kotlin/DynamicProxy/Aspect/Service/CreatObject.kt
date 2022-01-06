@@ -25,7 +25,6 @@ class CreatObject {
     }
 
     fun useSpring(obj: String): Any {
-
         //1.获取核心容器对象  此时创建配置文件中的对象
         val ac: ApplicationContext = ClassPathXmlApplicationContext(beanPath)
         return ac.getBean(obj)
