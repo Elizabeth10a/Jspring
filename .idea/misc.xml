@@ -8,10 +8,11 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/Proxy/pom.xml" />
         <option value="$PROJECT_DIR$/Mybatis/pom.xml" />
         <option value="$PROJECT_DIR$/SprBase/pom.xml" />
         <option value="$PROJECT_DIR$/ConDb/pom.xml" />
+        <option value="$PROJECT_DIR$/Proxy1/Proxy/pom.xml" />
+        <option value="$PROJECT_DIR$/Proxy/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

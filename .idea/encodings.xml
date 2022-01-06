@@ -3,6 +3,10 @@
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/Mybatis/src/main/05-mybatis.txt" charset="GBK" />
     <file url="file://$PROJECT_DIR$/Mybatis/src/main/java/mybatis/05-mybatis.txt" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/Proxy/src/main/kotlin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Proxy/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Proxy1/src/main/kotlin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Proxy1/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/SprBase/src/main/kotlin" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>

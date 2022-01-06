@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Proxy" />
         <module name="ConDb" />
         <module name="Mybatis" />
         <module name="SprBase" />
@@ -19,6 +20,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Proxy" options="-parameters" />
       <module name="SprBase" options="-parameters" />
     </option>
   </component>
