@@ -1,7 +1,7 @@
-package DynamicProxy.Jdk.Ex.service.impl;
+package DynamicProxy.Jdk.JdkEx.service.impl;
 
 
-import DynamicProxy.Jdk.Ex.service.SomeService;
+import DynamicProxy.Jdk.JdkEx.service.SomeService;
 
 // service类的代码不修改，也能够增加 输出时间， 事务。
 public class SomeServiceImpl implements SomeService {

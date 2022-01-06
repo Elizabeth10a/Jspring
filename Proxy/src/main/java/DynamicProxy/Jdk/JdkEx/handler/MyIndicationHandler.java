@@ -1,25 +1,25 @@
-package DynamicProxy.Jdk.Ex.handler;
+package DynamicProxy.Jdk.JdkEx.handler;
 
 
-import DynamicProxy.Jdk.Ex.util.ServiceTools;
+import DynamicProxy.Jdk.JdkEx.util.ServiceTools;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
-public class MyIncationHandler implements InvocationHandler {
+public class MyIndicationHandler implements InvocationHandler {
 
     //目标对象
     private Object target; //SomeServiceImpl类
 
-    public MyIncationHandler(Object target) {
+    public MyIndicationHandler(Object target) {
         this.target = target;
     }
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         //通过代理对象执行方法时，会调用执行这个invoke（）
-        System.out.println("执行MyIncationHandler中的invoke()");
-        System.out.println("method名称："+method.getName());
+        System.out.println("----执行MyIndicationHandler中的invoke()--");
+        System.out.println("执行method名称："+method.getName());
         String methodName = method.getName();
         Object res = null;
 

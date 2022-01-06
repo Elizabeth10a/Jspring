@@ -1,4 +1,4 @@
-package DynamicProxy.Jdk.Ex.util;
+package DynamicProxy.Jdk.JdkEx.util;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package DynamicProxy.Jdk.Ex.service;
+package DynamicProxy.Jdk.JdkEx.service;
 
 public interface SomeService {
 
