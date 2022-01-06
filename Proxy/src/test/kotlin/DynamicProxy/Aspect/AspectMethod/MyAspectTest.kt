@@ -17,8 +17,15 @@ class MyAspectTest {
     fun useSpring() {
         //转成接口
         var implProxy = co.useSpring("someService") as SomeService
-        println(implProxy::class.java.name) //jdk.proxy2.$Proxy22
-        implProxy.doSome("lisi", 23)
+//        println(implProxy::class.java.name) //jdk.proxy2.$Proxy22
+//        implProxy.doSome("lisi", 23)
+        implProxy.doOther("AA", 33)
+
+
+//        println(implProxy.doAround("as", 54))
+//        println(implProxy.doAfterThrowing(4, 2))
+//        println(implProxy.doAfterThrowing(4, 0))//发生异常时执行
+
     }
 
 }
