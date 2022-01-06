@@ -81,7 +81,7 @@ class MyAspect {
     }
 
     @AfterReturning(
-        value = "execution(String DynamicProxy.Aspect.Service.SomeServiceImpl.doOther(..))",
+        value = "execution(String DynamicProxy.Aspect.Service.NoInterface.doOther(..))",
         returning = "res"
     )
     fun doSomeAfterReturning(res: Any) {

@@ -47,6 +47,7 @@
 
        如果你期望目标类有接口，使用cglib代理
        proxy-target-class="true":告诉框架，要使用cglib动态代理
+    -->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
 
--->
 </beans>
