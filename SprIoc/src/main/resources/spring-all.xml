@@ -4,6 +4,7 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
+
     <!--
 
            把数据库的配置信息，写在一个独立的文件，编译修改数据库的配置内容
@@ -40,18 +41,17 @@
     创建dao对象，使用SqlSession的getMapper（StudentDao.class）
             MapperScannerConfigurer:在内部调用getMapper()生成每个dao接口的代理对象。
     -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <!--指定SqlSessionFactory对象的id-->
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <!--
-        指定包名， 包名是dao接口所在的包名。
-                    MapperScannerConfigurer会扫描这个包中的所有接口，把每个接口都执行
-                    一次getMapper()方法，得到每个接口的dao对象。
-                    创建好的dao对象放入到spring的容器中的。 dao对象的默认名称是 接口名首字母小写
-        -->
-        <property name="basePackage" value="com.eliza.sprioc.spribatis.dao"/>
-    </bean>
 
+    <!--组件扫描器，扫描注解 创建的对象-->
     <context:component-scan base-package="com.eliza.sprioc.spribatis"/>
+    <context:component-scan base-package="com.eliza.sprioc.affairsHandle"/>
+
+    <!--
+        因为有层级以来关系,因此import顺序不能乱
+    -->
+    <import resource="affairs/affairs-spring.xml"/>
+    <import resource="mybatis/ioc-spring.xml"/>
+    <import resource="affairsAnno/affairsAnno-spring.xml"/>
+    <import resource="aop/aop-spring.xml"/>
 
 </beans>

@@ -11,7 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext
  */
 class UseSpring {
 
-    var config = "spring.xml"
+    var config = "spring-all.xml"
     var ac: ApplicationContext = ClassPathXmlApplicationContext(config)
 
     constructor()

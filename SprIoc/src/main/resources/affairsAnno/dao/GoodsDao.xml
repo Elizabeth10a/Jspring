@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.eliza.sprioc.affairsHandle.dao.GoodsDao">
+
+    <select id="selectGoods" resultType="com.eliza.sprioc.affairsHandle.domain.Goods">
+        select id, name, amount, price
+        from Mybatis.goods
+        where id = #{gid}
+    </select>
+    <select id="getAllGoods" resultType="com.eliza.sprioc.affairsHandle.domain.Goods">
+        select id, name, amount, price
+        from Mybatis.goods
+    </select>
+
+    <update id="updateGoods">
+        update Mybatis.goods
+        set amount = amount - #{amount}
+        where id = #{id}
+    </update>
+
+
+</mapper>

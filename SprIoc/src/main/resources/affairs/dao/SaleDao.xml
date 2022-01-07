@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eliza.sprioc.affairsHandle.dao.SaleDao">
+    <insert id="insertSale">
+        insert into Mybatis.sale(gid, nums)
+        values (#{gid}, #{nums})
+    </insert>
+
+
+    <select id="getAllSales" resultType="com.eliza.sprioc.affairsHandle.domain.Sale">
+        select id, gid, nums
+        from Mybatis.sale
+    </select>
+
+</mapper>

@@ -19,7 +19,10 @@
 
     <!-- sql mapper(sql映射文件)的位置-->
     <mappers>
-        <mapper resource="mybatis/UserDao.xml"/>
+        <mapper resource="mybatis/dao/UserDao.xml"/>
+        <mapper resource="affairs/dao/GoodsDao.xml"/>
+        <mapper resource="affairs/dao/SaleDao.xml"/>
+
         <!--     不在同一包下   <package name=""/>-->
     </mappers>
 </configuration>
